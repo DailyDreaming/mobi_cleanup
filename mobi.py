@@ -10,7 +10,7 @@ class MobiFile(object):
         self.filename = filename
         self.english_dict = self.make_english_dict()
 
-    def start(self):
+    def run(self):
         word_spagetti = []
         for word in self.file_contents():
             if word not in self.english_dict:
