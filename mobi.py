@@ -13,10 +13,11 @@ class MobiFile(object):
     def run(self):
         word_spagetti = []
         for word in self.file_contents():
+            nexxt = True
             if word not in self.english_dict:
-                word, next = self.modify_if_conjoined(word)
-            if next:
-                word, next = self.modify_if_misspelled(word)
+                word, nexxt = self.modify_if_conjoined(word)
+            if nexxt:
+                word, nexxt = self.modify_if_misspelled(word)
             word_spagetti.append(word)
 
         # write output
@@ -62,7 +63,7 @@ class MobiFile(object):
 
     def modify_if_misspelled(self, word):
         """Attempt to fix some common misspellings in the mobi."""
-        word, next = self.replace_letter(word, 'n', 'ri')
-        if next:
-            word, next = self.replace_letter(word, 'm', 'in')
-        return word, next
+        word, nexxt = self.replace_letter(word, 'n', 'ri')
+        if nexxt:
+            word, nexxt = self.replace_letter(word, 'm', 'in')
+        return word, nexxt
